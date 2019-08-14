@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4d9e1398478dbc21bb93df84cf4e5f37",
+    "revision": "7b669ca30dbb1ba2f820fc3866bd97d4",
     "url": "/foreign-exchange/index.html"
   },
   {
-    "revision": "b101d7e4ac95b3f47b27",
+    "revision": "5f0ce7baca4e2e4b952e",
     "url": "/foreign-exchange/static/css/2.785edb15.chunk.css"
   },
   {
-    "revision": "9bc706f59405a7be7aac",
-    "url": "/foreign-exchange/static/css/main.2e865be5.chunk.css"
+    "revision": "5d33c2a4d74a0cb0c580",
+    "url": "/foreign-exchange/static/css/main.dd336cb4.chunk.css"
   },
   {
-    "revision": "b101d7e4ac95b3f47b27",
-    "url": "/foreign-exchange/static/js/2.50a9feb0.chunk.js"
+    "revision": "5f0ce7baca4e2e4b952e",
+    "url": "/foreign-exchange/static/js/2.ad785fe7.chunk.js"
   },
   {
-    "revision": "9bc706f59405a7be7aac",
-    "url": "/foreign-exchange/static/js/main.d9e4b23d.chunk.js"
+    "revision": "5d33c2a4d74a0cb0c580",
+    "url": "/foreign-exchange/static/js/main.dda1d4cc.chunk.js"
   },
   {
     "revision": "a0f4510cfc21263ede3a",
