@@ -1,6 +1,6 @@
 .App {
   text-align: left;
-  padding: 3rem;
+  padding: 3%;
 }
 
 .App-header {
@@ -16,7 +16,7 @@
 
 .row-between {
   display: flex;
-  margin-top: 10px;
+  margin: 10px 0;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;

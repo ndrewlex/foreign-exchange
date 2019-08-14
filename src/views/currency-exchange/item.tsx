@@ -1,34 +1,48 @@
 import React from "react";
-import { Card, Form } from "semantic-ui-react";
+import { Card, Grid, Form, Header } from "semantic-ui-react";
+import { code } from "currency-codes";
 import styled from "styled-components";
-import { IoMdCloseCircle } from "react-icons/io";
+import { FaMinusCircle } from "react-icons/fa";
 
-const Wrapper = styled.div`
-  width: 100%;
-  padding: 0.5rem;
-`;
-
-const Item = ({ currency, baseCurrency, baseValue, rate, onDelete }: any) => {
+const Item = ({ currency, baseCurrency, baseValue, rate }: any) => {
   return (
-    <Wrapper>
-      <Card fluid>
-        <Card.Content>
-          <Card.Header>
-            <div className="row-between">
-              <div>{currency}</div>
-              <div>{baseValue * rate}</div>
-              <div>
-                <IoMdCloseCircle onClick={onDelete} />
-              </div>
-            </div>
-          </Card.Header>
-          <Card.Meta>{currency}</Card.Meta>
-          <Card.Meta>
-            1 {baseCurrency} = {currency} {rate}
-          </Card.Meta>
-        </Card.Content>
-      </Card>
-    </Wrapper>
+    // <Card fluid>
+    //   <Card.Content>
+    //     <Card.Header>
+    //       <div className="row-between">
+    //         <div>{currency}</div>
+    //         <div>{new Intl.NumberFormat("de-ID").format(baseValue * rate)}</div>
+    //       </div>
+    //     </Card.Header>
+    //     <Card.Meta>
+    //       {currency} - {code(currency).currency}
+    //     </Card.Meta>
+    //     <Card.Meta>
+    //       1 {baseCurrency} = {currency}{" "}
+    //       {new Intl.NumberFormat("de-ID").format(rate)}
+    //     </Card.Meta>
+    //   </Card.Content>
+    // </Card>
+
+    <>
+      <div className="row-between">
+        <div>
+          <Header>{currency}</Header>
+        </div>
+        <div>
+          <Header>
+            {new Intl.NumberFormat("de-ID").format(baseValue * rate)}
+          </Header>
+        </div>
+      </div>
+      <p>
+        {currency} - {code(currency).currency}
+      </p>
+      <p>
+        1 {baseCurrency} = {currency}{" "}
+        {new Intl.NumberFormat("de-ID").format(rate)}
+      </p>
+    </>
   );
 };
 
