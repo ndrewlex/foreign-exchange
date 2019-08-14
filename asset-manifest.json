@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/foreign-exchange/static/css/main.2e865be5.chunk.css",
-    "main.js": "/foreign-exchange/static/js/main.d9e4b23d.chunk.js",
-    "main.js.map": "/foreign-exchange/static/js/main.d9e4b23d.chunk.js.map",
-    "runtime~main.js": "/foreign-exchange/static/js/runtime~main.55b8bb68.js",
-    "runtime~main.js.map": "/foreign-exchange/static/js/runtime~main.55b8bb68.js.map",
-    "static/css/2.785edb15.chunk.css": "/foreign-exchange/static/css/2.785edb15.chunk.css",
-    "static/js/2.50a9feb0.chunk.js": "/foreign-exchange/static/js/2.50a9feb0.chunk.js",
-    "static/js/2.50a9feb0.chunk.js.map": "/foreign-exchange/static/js/2.50a9feb0.chunk.js.map",
-    "index.html": "/foreign-exchange/index.html",
-    "precache-manifest.7c97b596dd3fa247d83b1a1d6ad83288.js": "/foreign-exchange/precache-manifest.7c97b596dd3fa247d83b1a1d6ad83288.js",
-    "service-worker.js": "/foreign-exchange/service-worker.js",
-    "static/css/2.785edb15.chunk.css.map": "/foreign-exchange/static/css/2.785edb15.chunk.css.map",
-    "static/css/main.2e865be5.chunk.css.map": "/foreign-exchange/static/css/main.2e865be5.chunk.css.map",
-    "static/media/semantic.min.css": "/foreign-exchange/static/media/outline-icons.ef60a4f6.woff"
+    "main.css": "/foreign-exchange/index/static/css/main.2e865be5.chunk.css",
+    "main.js": "/foreign-exchange/index/static/js/main.1f11609c.chunk.js",
+    "main.js.map": "/foreign-exchange/index/static/js/main.1f11609c.chunk.js.map",
+    "runtime~main.js": "/foreign-exchange/index/static/js/runtime~main.cc14d63c.js",
+    "runtime~main.js.map": "/foreign-exchange/index/static/js/runtime~main.cc14d63c.js.map",
+    "static/css/2.f25cecdf.chunk.css": "/foreign-exchange/index/static/css/2.f25cecdf.chunk.css",
+    "static/js/2.4bf33402.chunk.js": "/foreign-exchange/index/static/js/2.4bf33402.chunk.js",
+    "static/js/2.4bf33402.chunk.js.map": "/foreign-exchange/index/static/js/2.4bf33402.chunk.js.map",
+    "index.html": "/foreign-exchange/index/index.html",
+    "precache-manifest.60e6dbc0aa5bf54da6c31c37f01bf208.js": "/foreign-exchange/index/precache-manifest.60e6dbc0aa5bf54da6c31c37f01bf208.js",
+    "service-worker.js": "/foreign-exchange/index/service-worker.js",
+    "static/css/2.f25cecdf.chunk.css.map": "/foreign-exchange/index/static/css/2.f25cecdf.chunk.css.map",
+    "static/css/main.2e865be5.chunk.css.map": "/foreign-exchange/index/static/css/main.2e865be5.chunk.css.map",
+    "static/media/semantic.min.css": "/foreign-exchange/index/static/media/outline-icons.ef60a4f6.woff"
   }
 }
