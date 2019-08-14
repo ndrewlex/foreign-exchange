@@ -13,3 +13,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.row-between {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
