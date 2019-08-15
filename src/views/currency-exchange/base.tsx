@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Input } from "semantic-ui-react";
+import { Card, Input, Header } from "semantic-ui-react";
 
 const Base = ({ currency, value, onChange }: any) => {
   return (
@@ -9,14 +9,18 @@ const Base = ({ currency, value, onChange }: any) => {
       </Card.Meta>
       <Card.Header>
         <div className="row-between">
-          <div>{currency}</div>
-          <Input
-            size="mini"
-            placeholder="Value..."
-            defaultValue={value}
-            onChange={onChange}
-            type="number"
-          />
+          <div>
+            <Header as="h2">{currency}</Header>
+          </div>
+          <div>
+            <Input
+              size="mini"
+              placeholder="Value..."
+              defaultValue={value}
+              onChange={onChange}
+              type="number"
+            />
+          </div>
         </div>
       </Card.Header>
     </Card.Content>

@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, SyntheticEvent } from "react";
 import { createContainer } from "unstated-next";
 import { ExchangeRatesApi } from "../utils/config";
+
 const useCurrency = () => {
   const baseCurrency = "USD";
   const [baseValue, setBaseValue] = useState<any>("10.00");
@@ -80,8 +81,6 @@ const useCurrency = () => {
 
   const filterDropDownData = (visibleRates: any) => {
     const data = allRates.filter((item: any) => !visibleRates.includes(item));
-
-    console.log({ filterData: data, visibleRates, allRates });
     setDropDownData(
       data.map((item: any) => {
         return {
