@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/foreign-exchange/static/css/main.dd336cb4.chunk.css",
-    "main.js": "/foreign-exchange/static/js/main.dda1d4cc.chunk.js",
-    "main.js.map": "/foreign-exchange/static/js/main.dda1d4cc.chunk.js.map",
+    "main.css": "/foreign-exchange/static/css/main.9ba678f3.chunk.css",
+    "main.js": "/foreign-exchange/static/js/main.18d41158.chunk.js",
+    "main.js.map": "/foreign-exchange/static/js/main.18d41158.chunk.js.map",
     "runtime~main.js": "/foreign-exchange/static/js/runtime~main.55b8bb68.js",
     "runtime~main.js.map": "/foreign-exchange/static/js/runtime~main.55b8bb68.js.map",
-    "static/css/2.785edb15.chunk.css": "/foreign-exchange/static/css/2.785edb15.chunk.css",
-    "static/js/2.ad785fe7.chunk.js": "/foreign-exchange/static/js/2.ad785fe7.chunk.js",
-    "static/js/2.ad785fe7.chunk.js.map": "/foreign-exchange/static/js/2.ad785fe7.chunk.js.map",
+    "static/css/2.31acad06.chunk.css": "/foreign-exchange/static/css/2.31acad06.chunk.css",
+    "static/js/2.698687a4.chunk.js": "/foreign-exchange/static/js/2.698687a4.chunk.js",
+    "static/js/2.698687a4.chunk.js.map": "/foreign-exchange/static/js/2.698687a4.chunk.js.map",
     "index.html": "/foreign-exchange/index.html",
-    "precache-manifest.78ba246b3d4e95faa88cdac50ecca8f8.js": "/foreign-exchange/precache-manifest.78ba246b3d4e95faa88cdac50ecca8f8.js",
+    "precache-manifest.b0f5010741661d4108355a1aff589d8f.js": "/foreign-exchange/precache-manifest.b0f5010741661d4108355a1aff589d8f.js",
     "service-worker.js": "/foreign-exchange/service-worker.js",
-    "static/css/2.785edb15.chunk.css.map": "/foreign-exchange/static/css/2.785edb15.chunk.css.map",
-    "static/css/main.dd336cb4.chunk.css.map": "/foreign-exchange/static/css/main.dd336cb4.chunk.css.map",
+    "static/css/2.31acad06.chunk.css.map": "/foreign-exchange/static/css/2.31acad06.chunk.css.map",
+    "static/css/main.9ba678f3.chunk.css.map": "/foreign-exchange/static/css/main.9ba678f3.chunk.css.map",
     "static/media/semantic.min.css": "/foreign-exchange/static/media/outline-icons.ef60a4f6.woff"
   }
 }
