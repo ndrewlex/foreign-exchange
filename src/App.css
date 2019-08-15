@@ -4,7 +4,7 @@
 }
 
 .App-header {
-  background-color: #FFFF;
+  background-color: #ffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,4 +20,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.black {
+  color: #000000;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
 }

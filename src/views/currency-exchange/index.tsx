@@ -1,5 +1,5 @@
 import React, { useEffect, FunctionComponent } from "react";
-import { Card, Grid, Header } from "semantic-ui-react";
+import { Card, Grid } from "semantic-ui-react";
 import Base from "./base";
 import List from "./list";
 import Action from "./action";

@@ -26,17 +26,27 @@ const Item = ({
     <Grid celled>
       <Grid.Row>
         <Grid.Column width={13}>
-          <Header>{currency}</Header>
-          <Header floated="right">
-            {new Intl.NumberFormat("de-ID").format(baseValue * rate)}
-          </Header>
-          <p>
-            {currency} - {code(currency).currency}
-          </p>
-          <p>
-            1 {baseCurrency} = {currency}{" "}
-            {new Intl.NumberFormat("de-ID").format(rate)}
-          </p>
+          <div className="row-between">
+            <div>
+              <Header>{currency}</Header>
+            </div>
+            <div>
+              <Header>
+                {new Intl.NumberFormat("de-ID").format(baseValue * rate)}
+              </Header>
+            </div>
+          </div>
+          <div className="black bold italic">
+            <p>
+              {currency} - {code(currency).currency}
+            </p>
+          </div>
+          <div className="bold">
+            <p>
+              1 {baseCurrency} = {currency}{" "}
+              {new Intl.NumberFormat("de-ID").format(rate)}
+            </p>
+          </div>
         </Grid.Column>
         <Grid.Column width={3}>
           <DeleteContainer>
