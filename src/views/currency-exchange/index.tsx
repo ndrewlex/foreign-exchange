@@ -1,42 +1,22 @@
 import React, { useEffect, FunctionComponent } from "react";
-import { Card, Dropdown, Button, Grid } from "semantic-ui-react";
-import styled from "styled-components";
+import { Card, Grid, Header } from "semantic-ui-react";
 import Base from "./base";
-import Item from "./item";
-import { FaMinusCircle } from "react-icons/fa";
+import List from "./list";
+import Action from "./action";
 import { CurrencyContainer } from "../../stores/index";
 
 interface ICurrencyExchange {}
 
-const DeleteContainer = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  svg {
-    font-size: 26px;
-    margin: auto;
-  }
-`;
-
-const CardContainer = styled.div`
-  padding: 0 0.5rem;
-`;
-
-const data: any = {
-  baseCurrency: "USD"
+const Loading = () => {
+  return <Card.Content>Loading...</Card.Content>;
 };
-
 const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
   const {
-    loading,
     baseValue,
-    visibleRates,
-    dropDownData,
     fetchData,
     onChangeValue,
-    onChangeNewRate,
-    onAddRate,
-    onDeleteRate
+    baseCurrency,
+    loading
   } = CurrencyContainer.useContainer();
 
   useEffect(() => {
@@ -48,55 +28,15 @@ const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
       <Grid.Column mobile={16} tablet={8} computer={6}>
         <Card fluid>
           <Base
-            currency={data.baseCurrency}
+            currency={baseCurrency}
             value={baseValue}
             onChange={onChangeValue}
           />
-          <Card.Content extra>
-            {!loading ? (
-              visibleRates.map((item: any, index: any) => {
-                return (
-                  <CardContainer key={index}>
-                    <Grid celled>
-                      <Grid.Row>
-                        <Grid.Column width={13}>
-                          <Item
-                            key={index}
-                            currency={item.currency}
-                            rate={item.rate}
-                            baseCurrency={data.baseCurrency}
-                            baseValue={baseValue}
-                          />
-                        </Grid.Column>
-                        <Grid.Column width={3}>
-                          <DeleteContainer>
-                            <FaMinusCircle
-                              onClick={(e: any) => onDeleteRate(e, index)}
-                            />
-                          </DeleteContainer>
-                        </Grid.Column>
-                      </Grid.Row>
-                    </Grid>
-                  </CardContainer>
-                );
-              })
-            ) : (
-              <div>Loading...</div>
-            )}
-          </Card.Content>
-          <Card.Content extra>
-            <div className="row-between">
-              <Dropdown
-                placeholder="Select currency"
-                fluid
-                search
-                selection
-                options={dropDownData}
-                onChange={onChangeNewRate}
-              />
-              <Button onClick={onAddRate}>Add</Button>
-            </div>
-          </Card.Content>
+          {loading && <Loading />}
+          <React.Fragment>
+            <List />
+            <Action />
+          </React.Fragment>
         </Card>
       </Grid.Column>
     </Grid>

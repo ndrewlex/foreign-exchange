@@ -1,7 +1,8 @@
 import { useState, ChangeEvent, SyntheticEvent } from "react";
 import { createContainer } from "unstated-next";
-
+import { ExchangeRatesApi } from "../utils/config";
 const useCurrency = () => {
+  const baseCurrency = "USD";
   const [baseValue, setBaseValue] = useState<any>("10.00");
   const [allRates, setAllRates] = useState<any>([]);
   const [loading, setLoading] = useState<any>(true);
@@ -10,31 +11,29 @@ const useCurrency = () => {
   const [newRate, setNewRate] = useState<any>(null);
 
   const fetchData = async () => {
-    const allCurrencyRates = await fetchAllCurrencyRates();
-    setAllRates(allCurrencyRates);
-    setDropDownData(
-      allCurrencyRates.map((item: any) => {
-        return {
-          key: item.currency,
-          value: item.currency,
-          text: item.currency
-        };
-      })
-    );
-    setVisibleRates(allCurrencyRates.slice(0, 4));
-    setLoading(false);
-  };
-
-  const updateAllCurrencyRates = async () => {
-    const allCurrencyRates = await fetchAllCurrencyRates();
-    setAllRates(allCurrencyRates);
+    try {
+      const allCurrencyRates = await fetchAllCurrencyRates();
+      setAllRates(allCurrencyRates);
+      setDropDownData(
+        allCurrencyRates.map((item: any) => {
+          return {
+            key: item.currency,
+            value: item.currency,
+            text: item.currency
+          };
+        })
+      );
+      setVisibleRates(allCurrencyRates.slice(0, 4));
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const fetchAllCurrencyRates = async () => {
-    const base = "USD";
     const symbols = "CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW";
     const response = await fetch(
-      `https://api.exchangeratesapi.io/latest?base=${base}&symbols=${symbols}`
+      `${ExchangeRatesApi}/latest?base=${baseCurrency}&symbols=${symbols}`
     );
     const json = await response.json();
     let allCurrencyRates: any = [];
@@ -62,25 +61,46 @@ const useCurrency = () => {
     }
   };
 
-  const onAddRate = (event: SyntheticEvent) => {
+  const onAddRate = async (event: SyntheticEvent) => {
     event.preventDefault();
-    if (newRate != null) {
-      updateAllCurrencyRates();
-      const isExist = visibleRates.find((item: any) => {
-        return item.currency === newRate.currency;
-      });
-      !isExist &&
-        newRate !== null &&
-        setVisibleRates([...visibleRates, newRate]);
+    const isExist = visibleRates.find((item: any) => {
+      return item.currency === newRate.currency;
+    });
+    if (!isExist && newRate !== null) {
+      setVisibleRates([...visibleRates, newRate]);
+      filterDropDownData([...visibleRates, newRate]);
+      setNewRate(null);
     }
+  };
+
+  const onAddMoreCurrency = (event: SyntheticEvent) => {
+    event.preventDefault();
+    filterDropDownData(visibleRates);
+  };
+
+  const filterDropDownData = (visibleRates: any) => {
+    const data = allRates.filter((item: any) => !visibleRates.includes(item));
+
+    console.log({ filterData: data, visibleRates, allRates });
+    setDropDownData(
+      data.map((item: any) => {
+        return {
+          key: item.currency,
+          value: item.currency,
+          text: item.currency
+        };
+      })
+    );
+    setNewRate(data[0]);
   };
 
   const onDeleteRate = (event: any, index: any) => {
     event.preventDefault();
     let copyOfVisibleRates = visibleRates;
     copyOfVisibleRates.splice(index, 1);
-    console.log({ copyOfVisibleRates });
+    filterDropDownData(copyOfVisibleRates);
     setVisibleRates([...copyOfVisibleRates]);
+    setNewRate(null);
   };
 
   return {
@@ -92,7 +112,11 @@ const useCurrency = () => {
     onChangeValue,
     onChangeNewRate,
     onAddRate,
-    onDeleteRate
+    onDeleteRate,
+    baseCurrency,
+    newRate,
+    setNewRate,
+    onAddMoreCurrency
   };
 };
 
