@@ -17,7 +17,9 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.3",
     "styled-components": "^4.3.2",
-    "typescript": "3.5.3"
+    "typescript": "3.5.3",
+    "unstated": "^2.1.1",
+    "unstated-next": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

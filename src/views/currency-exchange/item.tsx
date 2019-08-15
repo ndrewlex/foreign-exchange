@@ -1,8 +1,6 @@
 import React from "react";
-import { Card, Grid, Form, Header } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import { code } from "currency-codes";
-import styled from "styled-components";
-import { FaMinusCircle } from "react-icons/fa";
 
 const Item = ({ currency, baseCurrency, baseValue, rate }: any) => {
   return (
