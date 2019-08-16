@@ -10,7 +10,7 @@ const Base = ({ currency, value, onChange }: any) => {
       <Card.Header>
         <div className="row-between">
           <div>
-            <Header as="h2">{currency}</Header>
+            <Header>{currency}</Header>
           </div>
           <div>
             <Input

@@ -28,10 +28,10 @@ const Item = ({
         <Grid.Column width={13}>
           <div className="row-between">
             <div>
-              <Header as="h2">{currency}</Header>
+              <Header>{currency}</Header>
             </div>
             <div>
-              <Header as="h2">
+              <Header>
                 {new Intl.NumberFormat("de-ID").format(baseValue * rate)}
               </Header>
             </div>
