@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="content"
+>
+  <div
+    className="meta"
+  >
+    <div
+      className="black bold"
+    >
+      USD - United States Dollar
+    </div>
+  </div>
+  <div
+    className="header"
+  >
+    <div
+      className="row-between"
+    >
+      <div>
+        <div
+          className="ui header"
+        >
+          USD
+        </div>
+      </div>
+      <div>
+        <div
+          className="ui mini input"
+        >
+          <input
+            onChange={[Function]}
+            placeholder="Value..."
+            type="number"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
