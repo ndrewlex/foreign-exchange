@@ -4,6 +4,7 @@ import { ExchangeRatesApi } from "../utils/config";
 
 const useCurrency = () => {
   const baseCurrency = "USD";
+  const supportCurrency = "CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW"; //only support currency can be added
   const [baseValue, setBaseValue] = useState<any>("10.00");
   const [allRates, setAllRates] = useState<any>([]);
   const [loading, setLoading] = useState<any>(true);
@@ -11,9 +12,10 @@ const useCurrency = () => {
   const [options, setOptions] = useState<any>([]);
   const [selectedOption, setSelectedOption] = useState<any>(null);
 
-  const fetchData = async () => {
+  const onFetchData = async () => {
     try {
-      const allCurrencyRates = await fetchAllCurrencyRates();
+      const response = await fetchAllCurrencyRates();
+      const allCurrencyRates = mapResponse(response);
       setAllRates(allCurrencyRates);
       setOptions(
         allCurrencyRates.map((item: any) => {
@@ -31,20 +33,27 @@ const useCurrency = () => {
     }
   };
 
-  const fetchAllCurrencyRates = async () => {
-    const symbols = "CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW";
-    const response = await fetch(
-      `${ExchangeRatesApi}/latest?base=${baseCurrency}&symbols=${symbols}`
-    );
-    const json = await response.json();
+  const mapResponse = response => {
     let allCurrencyRates: any = [];
-    for (let currency in json.rates) {
+    for (let currency in response.rates) {
       allCurrencyRates.push({
         currency,
-        rate: json.rates[currency]
+        rate: response.rates[currency]
       });
     }
     return allCurrencyRates;
+  };
+
+  const fetchAllCurrencyRates = async () => {
+    try {
+      const response = await fetch(
+        `${ExchangeRatesApi}/latest?base=${baseCurrency}&symbols=${supportCurrency}`
+      );
+      const json = await response.json();
+      return Promise.resolve(json);
+    } catch (err) {
+      return Promise.reject(err);
+    }
   };
 
   const onChangeBaseValue = (event: ChangeEvent, data: any) => {
@@ -104,17 +113,20 @@ const useCurrency = () => {
   };
 
   return {
+    //global state
     loading,
     baseValue,
+    baseCurrency,
     listData,
     options,
-    fetchData,
+    selectedOption,
+
+    //global function
+    onFetchData,
     onChangeBaseValue,
     onChangeSelectedOption,
     onAddList,
     onDeleteList,
-    baseCurrency,
-    selectedOption,
     setSelectedOption,
     onAddMoreCurrency
   };

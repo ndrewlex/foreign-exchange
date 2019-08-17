@@ -24,14 +24,14 @@ const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
   // console.log({ useContainer: useContainer(CurrencyContainer) });
   const {
     baseValue,
-    fetchData,
+    onFetchData,
     onChangeBaseValue,
     baseCurrency,
     loading
   } = useContainer(CurrencyContainer);
 
   useEffect(() => {
-    fetchData();
+    onFetchData();
   }, []);
 
   return (
