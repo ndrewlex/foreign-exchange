@@ -21,7 +21,6 @@ const Loading = () => {
 };
 
 const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
-  // console.log({ useContainer: useContainer(CurrencyContainer) });
   const {
     baseValue,
     onFetchData,
