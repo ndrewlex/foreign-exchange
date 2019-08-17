@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1d02b36f63c7ece126a3d8305694c7da",
+    "revision": "20e3bbff61e233ebd1536d5f94df9afe",
     "url": "/foreign-exchange/index.html"
   },
   {
-    "revision": "1310203afbabe5c7ed27",
-    "url": "/foreign-exchange/static/css/2.31acad06.chunk.css"
+    "revision": "0ad0c3e729d6d94e45c0",
+    "url": "/foreign-exchange/static/css/2.785edb15.chunk.css"
   },
   {
-    "revision": "a15674541d906648f31b",
-    "url": "/foreign-exchange/static/css/main.9ba678f3.chunk.css"
+    "revision": "4ba8095d57062b08e999",
+    "url": "/foreign-exchange/static/css/main.e7b5db9a.chunk.css"
   },
   {
-    "revision": "1310203afbabe5c7ed27",
-    "url": "/foreign-exchange/static/js/2.426cd8fa.chunk.js"
+    "revision": "0ad0c3e729d6d94e45c0",
+    "url": "/foreign-exchange/static/js/2.4bb95261.chunk.js"
   },
   {
-    "revision": "a15674541d906648f31b",
-    "url": "/foreign-exchange/static/js/main.fa60c08f.chunk.js"
+    "revision": "4ba8095d57062b08e999",
+    "url": "/foreign-exchange/static/js/main.2619e385.chunk.js"
   },
   {
     "revision": "a0f4510cfc21263ede3a",
