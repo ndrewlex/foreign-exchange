@@ -3,32 +3,21 @@ import { Card } from "semantic-ui-react";
 import { CurrencyContainer } from "../../stores/index";
 import Item from "./item";
 import styled from "styled-components";
+import { observer, inject } from "mobx-react";
 
 const CardContainer = styled.div`
   padding: 0 0.5rem;
 `;
 
-const List = () => {
-  const {
-    baseValue,
-    visibleRates,
-    onDeleteRate,
-    baseCurrency
-  } = CurrencyContainer.useContainer();
+const List = ({ currency }: any) => {
   return (
     <React.Fragment>
-      {visibleRates.length > 0 && (
+      {!currency.isListEmpty && (
         <Card.Content extra>
-          {visibleRates.map((item: any, index: any) => {
+          {currency.list.map((item: any, index: any) => {
             return (
               <CardContainer key={index}>
-                <Item
-                  currency={item.currency}
-                  rate={item.rate}
-                  baseCurrency={baseCurrency}
-                  baseValue={baseValue}
-                  onDelete={(e: any) => onDeleteRate(e, index)}
-                />
+                <Item details={item} index={index} />
               </CardContainer>
             );
           })}
@@ -38,4 +27,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default inject("currency")(observer(List));

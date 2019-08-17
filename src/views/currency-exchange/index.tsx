@@ -4,35 +4,22 @@ import Base from "./base";
 import List from "./list";
 import Action from "./action";
 import { CurrencyContainer } from "../../stores/index";
-
-interface ICurrencyExchange {}
+import { inject, observer } from "mobx-react";
 
 const Loading = () => {
   return <Card.Content>Loading...</Card.Content>;
 };
-const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
-  const {
-    baseValue,
-    fetchData,
-    onChangeValue,
-    baseCurrency,
-    loading
-  } = CurrencyContainer.useContainer();
-
+const CurrencyExchange = ({ currency }: any) => {
   useEffect(() => {
-    fetchData();
+    currency.fetchInitialData();
   }, []);
 
   return (
     <Grid centered verticalAlign="middle" columns={3}>
       <Grid.Column mobile={16} tablet={8} computer={6}>
         <Card fluid>
-          <Base
-            currency={baseCurrency}
-            value={baseValue}
-            onChange={onChangeValue}
-          />
-          {loading && <Loading />}
+          <Base />
+          {currency.loading && <Loading />}
           <React.Fragment>
             <List />
             <Action />
@@ -43,4 +30,4 @@ const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
   );
 };
 
-export default CurrencyExchange;
+export default inject("currency")(observer(CurrencyExchange));

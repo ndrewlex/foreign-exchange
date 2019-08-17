@@ -58,6 +58,7 @@ const useCurrency = () => {
       (item: any) => item.currency === data.value
     );
     if (selectedRate) {
+      console.log({ data });
       setNewRate(selectedRate);
     }
   };

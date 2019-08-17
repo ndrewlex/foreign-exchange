@@ -1,20 +1,29 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import { Card, Dropdown, Button } from "semantic-ui-react";
-import { CurrencyContainer } from "../../stores/index";
+import { observer, inject } from "mobx-react";
 
-const Action = () => {
+const Action = ({ currency }: any) => {
   const {
-    dropDownData,
-    onChangeNewRate,
-    onAddRate,
-    newRate,
-    onAddMoreCurrency
-  } = CurrencyContainer.useContainer();
+    isDropDownEmpty,
+    selectedDropdown,
+    setSelectedDropdown,
+    setDropdownValue,
+    dropdown,
+    dropdownValue,
+    onAddMoreCurrency,
+    onChangeDropdown
+  } = currency;
+
+  // const onChangeDropdown = (event: SyntheticEvent, data: any) => {
+  //   event.preventDefault();
+  //   setDropdownValue(data.value);
+  // };
+
   return (
     <React.Fragment>
-      {dropDownData.length !== 0 && (
+      {!isDropDownEmpty && (
         <Card.Content extra>
-          {newRate === null ? (
+          {selectedDropdown === null ? (
             <Button onClick={onAddMoreCurrency}>Add More Currency</Button>
           ) : (
             <div className="row-between">
@@ -23,11 +32,11 @@ const Action = () => {
                 fluid
                 search
                 selection
-                defaultValue={newRate.currency}
-                options={dropDownData}
-                onChange={onChangeNewRate}
+                defaultValue={dropdownValue}
+                options={dropdown}
+                onChange={onChangeDropdown}
               />
-              <Button onClick={onAddRate}>Submit</Button>
+              {/* <Button onClick={onAddRate}>Submit</Button> */}
             </div>
           )}
         </Card.Content>
@@ -36,4 +45,4 @@ const Action = () => {
   );
 };
 
-export default Action;
+export default inject("currency")(observer(Action));

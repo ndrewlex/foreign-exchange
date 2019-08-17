@@ -1,23 +1,32 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { Card, Input, Header } from "semantic-ui-react";
+import { code } from "currency-codes";
+import { inject, observer } from "mobx-react";
 
-const Base = ({ currency, value, onChange }: any) => {
+const Base = ({ currency }: any) => {
+  const onChangeBaseValue = (event: ChangeEvent, data: any) => {
+    event.preventDefault();
+    currency.setBaseValue(data.value);
+  };
+
   return (
     <Card.Content>
       <Card.Meta>
-        <div className="black bold">USD - United States Dollar</div>
+        <div className="black bold">
+          {currency.base.id} - {code(currency.base.id).currency}
+        </div>
       </Card.Meta>
       <Card.Header>
         <div className="row-between">
           <div>
-            <Header>{currency}</Header>
+            <Header>{currency.base.id}</Header>
           </div>
           <div>
             <Input
               size="mini"
               placeholder="Value..."
-              defaultValue={value}
-              onChange={onChange}
+              defaultValue={currency.base.value}
+              onChange={onChangeBaseValue}
               type="number"
             />
           </div>
@@ -27,4 +36,4 @@ const Base = ({ currency, value, onChange }: any) => {
   );
 };
 
-export default Base;
+export default inject("currency")(observer(Base));
