@@ -6,21 +6,11 @@ import Action from "./action";
 import { CurrencyContainer } from "../../stores/index";
 import { useContainer } from "unstated-next";
 
-interface ICurrencyExchange {}
-
-const CurrencyExchangeContainer: FunctionComponent = () => {
-  return (
-    <CurrencyContainer.Provider>
-      <CurrencyExchange />
-    </CurrencyContainer.Provider>
-  );
-};
-
 const Loading = () => {
   return <Card.Content>Loading...</Card.Content>;
 };
 
-const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
+const CurrencyExchange: FunctionComponent = () => {
   const {
     baseValue,
     onFetchData,
@@ -53,4 +43,4 @@ const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
   );
 };
 
-export default CurrencyExchangeContainer;
+export default CurrencyExchange;

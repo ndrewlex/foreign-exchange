@@ -2,13 +2,16 @@ import React, { FunctionComponent } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import CurrencyExchange from "./components/currency-exchange/";
+import { CurrencyContainer } from "./stores";
 import "semantic-ui-css/semantic.min.css";
 import * as serviceWorker from "./serviceWorker";
 
 const App: FunctionComponent = () => {
   return (
     <div className="App">
-      <CurrencyExchange />
+      <CurrencyContainer.Provider>
+        <CurrencyExchange />
+      </CurrencyContainer.Provider>
     </div>
   );
 };
