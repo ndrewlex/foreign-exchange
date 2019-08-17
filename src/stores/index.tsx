@@ -33,7 +33,7 @@ const useCurrency = () => {
     }
   };
 
-  const mapResponse = response => {
+  const mapResponse = (response: any) => {
     let allCurrencyRates: any = [];
     for (let currency in response.rates) {
       allCurrencyRates.push({
