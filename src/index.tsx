@@ -1,9 +1,20 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import CurrencyExchange from "./views/currency-exchange/";
+import { CurrencyContainer } from "./stores/index";
 import "semantic-ui-css/semantic.min.css";
 import * as serviceWorker from "./serviceWorker";
+
+const App: FunctionComponent = () => {
+  return (
+    <div className="App">
+      <CurrencyContainer.Provider>
+        <CurrencyExchange />
+      </CurrencyContainer.Provider>
+    </div>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
