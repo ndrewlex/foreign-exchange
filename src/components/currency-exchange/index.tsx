@@ -23,7 +23,7 @@ const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
   const {
     baseValue,
     fetchData,
-    onChangeValue,
+    onChangeBaseValue,
     baseCurrency,
     loading
   } = CurrencyContainer.useContainer();
@@ -39,7 +39,7 @@ const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
           <Base
             currency={baseCurrency}
             value={baseValue}
-            onChange={onChangeValue}
+            onChange={onChangeBaseValue}
           />
           {loading && <Loading />}
           <React.Fragment>

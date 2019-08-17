@@ -12,7 +12,7 @@ const List = () => {
   const {
     baseValue,
     listData,
-    onDeleteRate,
+    onDeleteList,
     baseCurrency
   } = CurrencyContainer.useContainer();
   return (
@@ -23,11 +23,10 @@ const List = () => {
             return (
               <CardContainer key={index}>
                 <Item
-                  currency={item.currency}
-                  rate={item.rate}
+                  details={item}
                   baseCurrency={baseCurrency}
                   baseValue={baseValue}
-                  onDelete={(e: any) => onDeleteRate(e, index)}
+                  onDelete={(e: any) => onDeleteList(e, index)}
                 />
               </CardContainer>
             );

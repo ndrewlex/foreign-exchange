@@ -8,14 +8,14 @@ const useCurrency = () => {
   const [allRates, setAllRates] = useState<any>([]);
   const [loading, setLoading] = useState<any>(true);
   const [listData, setListData] = useState<any>([]);
-  const [dropDownData, setDropDownData] = useState<any>([]);
-  const [newRate, setNewRate] = useState<any>(null);
+  const [options, setOptions] = useState<any>([]);
+  const [selectedOption, setSelectedOption] = useState<any>(null);
 
   const fetchData = async () => {
     try {
       const allCurrencyRates = await fetchAllCurrencyRates();
       setAllRates(allCurrencyRates);
-      setDropDownData(
+      setOptions(
         allCurrencyRates.map((item: any) => {
           return {
             key: item.currency,
@@ -47,41 +47,51 @@ const useCurrency = () => {
     return allCurrencyRates;
   };
 
-  const onChangeValue = (event: ChangeEvent, data: any) => {
+  const onChangeBaseValue = (event: ChangeEvent, data: any) => {
     event.preventDefault();
     setBaseValue(data.value);
   };
 
-  const onChangeNewRate = (event: SyntheticEvent, data: any) => {
+  const onChangeSelectedOption = (event: SyntheticEvent, data: any) => {
     event.preventDefault();
     const selectedRate = allRates.find(
       (item: any) => item.currency === data.value
     );
     if (selectedRate) {
-      setNewRate(selectedRate);
+      setSelectedOption(selectedRate);
     }
   };
 
-  const onAddRate = async (event: SyntheticEvent) => {
+  const onAddList = async (event: SyntheticEvent) => {
     event.preventDefault();
     const isExist = listData.find((item: any) => {
-      return item.currency === newRate.currency;
+      return item.currency === selectedOption.currency;
     });
-    if (!isExist && newRate !== null) {
-      setListData([...listData, newRate]);
-      filterDropDownData([...listData, newRate]);
-      setNewRate(null);
+    if (!isExist && selectedOption !== null) {
+      setListData([...listData, selectedOption]);
+      filterOptions([...listData, selectedOption]);
+      setSelectedOption(null);
     }
+  };
+
+  const onDeleteList = (event: any, index: any) => {
+    event.preventDefault();
+    let copyOfListData = listData;
+    copyOfListData.splice(index, 1);
+    filterOptions(copyOfListData);
+    setListData([...copyOfListData]);
+    setSelectedOption(null);
   };
 
   const onAddMoreCurrency = (event: SyntheticEvent) => {
     event.preventDefault();
-    filterDropDownData(listData);
+    filterOptions(listData);
   };
 
-  const filterDropDownData = (listData: any) => {
+  //filterOptions to prevent added duplicate currency in list
+  const filterOptions = (listData: any) => {
     const data = allRates.filter((item: any) => !listData.includes(item));
-    setDropDownData(
+    setOptions(
       data.map((item: any) => {
         return {
           key: item.currency,
@@ -90,31 +100,22 @@ const useCurrency = () => {
         };
       })
     );
-    setNewRate(data[0]);
-  };
-
-  const onDeleteRate = (event: any, index: any) => {
-    event.preventDefault();
-    let copyOfListData = listData;
-    copyOfListData.splice(index, 1);
-    filterDropDownData(copyOfListData);
-    setListData([...copyOfListData]);
-    setNewRate(null);
+    setSelectedOption(data[0]);
   };
 
   return {
     loading,
     baseValue,
     listData,
-    dropDownData,
+    options,
     fetchData,
-    onChangeValue,
-    onChangeNewRate,
-    onAddRate,
-    onDeleteRate,
+    onChangeBaseValue,
+    onChangeSelectedOption,
+    onAddList,
+    onDeleteList,
     baseCurrency,
-    newRate,
-    setNewRate,
+    selectedOption,
+    setSelectedOption,
     onAddMoreCurrency
   };
 };

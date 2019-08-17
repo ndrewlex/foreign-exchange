@@ -14,37 +14,32 @@ const DeleteContainer = styled.div`
   }
 `;
 
-const Item = ({
-  currency,
-  baseCurrency,
-  baseValue,
-  rate,
-  onDelete,
-  index
-}: any) => {
+const Item = ({ details, baseCurrency, baseValue, onDelete, index }: any) => {
   return (
     <Grid celled>
       <Grid.Row>
         <Grid.Column width={13}>
           <div className="row-between">
             <div>
-              <Header>{currency}</Header>
+              <Header>{details.currency}</Header>
             </div>
             <div>
               <Header>
-                {new Intl.NumberFormat("de-ID").format(baseValue * rate)}
+                {new Intl.NumberFormat("de-ID").format(
+                  baseValue * details.rate
+                )}
               </Header>
             </div>
           </div>
           <div className="black bold italic">
             <p>
-              {currency} - {code(currency).currency}
+              {details.currency} - {code(details.currency).currency}
             </p>
           </div>
           <div className="bold">
             <p>
-              1 {baseCurrency} = {currency}{" "}
-              {new Intl.NumberFormat("de-ID").format(rate)}
+              1 {baseCurrency} = {details.currency}{" "}
+              {new Intl.NumberFormat("de-ID").format(details.rate)}
             </p>
           </div>
         </Grid.Column>

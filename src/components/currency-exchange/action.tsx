@@ -1,34 +1,41 @@
 import React from "react";
-import { Card, Dropdown, Button } from "semantic-ui-react";
+import { Card, Dropdown, Button, Icon, Grid } from "semantic-ui-react";
 import { CurrencyContainer } from "../../stores/index";
 
 const Action = () => {
   const {
-    dropDownData,
-    onChangeNewRate,
-    onAddRate,
-    newRate,
+    options,
+    onChangeSelectedOption,
+    onAddList,
+    selectedOption,
     onAddMoreCurrency
   } = CurrencyContainer.useContainer();
   return (
     <React.Fragment>
-      {dropDownData.length !== 0 && (
+      {options.length !== 0 && (
         <Card.Content extra>
-          {newRate === null ? (
-            <Button onClick={onAddMoreCurrency}>Add More Currency</Button>
+          {selectedOption === null ? (
+            <Button onClick={onAddMoreCurrency} size="large" centered>
+              <Icon name="plus square" />
+              Add More Currency
+            </Button>
           ) : (
-            <div className="row-between">
-              <Dropdown
-                placeholder="Select currency"
-                fluid
-                search
-                selection
-                defaultValue={newRate.currency}
-                options={dropDownData}
-                onChange={onChangeNewRate}
-              />
-              <Button onClick={onAddRate}>Submit</Button>
-            </div>
+            <Grid columns={2}>
+              <Grid.Column mobile={10} tablet={10} computer={10}>
+                <Dropdown
+                  placeholder="Select currency"
+                  fluid
+                  search
+                  selection
+                  defaultValue={selectedOption.currency}
+                  options={options}
+                  onChange={onChangeSelectedOption}
+                />
+              </Grid.Column>
+              <Grid.Column mobile={6} tablet={6} computer={6} stretched>
+                <Button onClick={onAddList}>Submit</Button>
+              </Grid.Column>
+            </Grid>
           )}
         </Card.Content>
       )}
