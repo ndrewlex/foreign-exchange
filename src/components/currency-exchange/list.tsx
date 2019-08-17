@@ -11,15 +11,15 @@ const CardContainer = styled.div`
 const List = () => {
   const {
     baseValue,
-    visibleRates,
+    listData,
     onDeleteRate,
     baseCurrency
   } = CurrencyContainer.useContainer();
   return (
     <React.Fragment>
-      {visibleRates.length > 0 && (
+      {listData.length > 0 && (
         <Card.Content extra>
-          {visibleRates.map((item: any, index: any) => {
+          {listData.map((item: any, index: any) => {
             return (
               <CardContainer key={index}>
                 <Item

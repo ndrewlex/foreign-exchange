@@ -7,9 +7,18 @@ import { CurrencyContainer } from "../../stores/index";
 
 interface ICurrencyExchange {}
 
+const CurrencyExchangeContainer: FunctionComponent = () => {
+  return (
+    <CurrencyContainer.Provider>
+      <CurrencyExchange />
+    </CurrencyContainer.Provider>
+  );
+};
+
 const Loading = () => {
   return <Card.Content>Loading...</Card.Content>;
 };
+
 const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
   const {
     baseValue,
@@ -43,4 +52,4 @@ const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
   );
 };
 
-export default CurrencyExchange;
+export default CurrencyExchangeContainer;

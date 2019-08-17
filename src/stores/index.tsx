@@ -7,7 +7,7 @@ const useCurrency = () => {
   const [baseValue, setBaseValue] = useState<any>("10.00");
   const [allRates, setAllRates] = useState<any>([]);
   const [loading, setLoading] = useState<any>(true);
-  const [visibleRates, setVisibleRates] = useState<any>([]);
+  const [listData, setListData] = useState<any>([]);
   const [dropDownData, setDropDownData] = useState<any>([]);
   const [newRate, setNewRate] = useState<any>(null);
 
@@ -24,7 +24,7 @@ const useCurrency = () => {
           };
         })
       );
-      setVisibleRates(allCurrencyRates.slice(0, 4));
+      setListData(allCurrencyRates.slice(0, 4)); //add default data to list
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -64,23 +64,23 @@ const useCurrency = () => {
 
   const onAddRate = async (event: SyntheticEvent) => {
     event.preventDefault();
-    const isExist = visibleRates.find((item: any) => {
+    const isExist = listData.find((item: any) => {
       return item.currency === newRate.currency;
     });
     if (!isExist && newRate !== null) {
-      setVisibleRates([...visibleRates, newRate]);
-      filterDropDownData([...visibleRates, newRate]);
+      setListData([...listData, newRate]);
+      filterDropDownData([...listData, newRate]);
       setNewRate(null);
     }
   };
 
   const onAddMoreCurrency = (event: SyntheticEvent) => {
     event.preventDefault();
-    filterDropDownData(visibleRates);
+    filterDropDownData(listData);
   };
 
-  const filterDropDownData = (visibleRates: any) => {
-    const data = allRates.filter((item: any) => !visibleRates.includes(item));
+  const filterDropDownData = (listData: any) => {
+    const data = allRates.filter((item: any) => !listData.includes(item));
     setDropDownData(
       data.map((item: any) => {
         return {
@@ -95,17 +95,17 @@ const useCurrency = () => {
 
   const onDeleteRate = (event: any, index: any) => {
     event.preventDefault();
-    let copyOfVisibleRates = visibleRates;
-    copyOfVisibleRates.splice(index, 1);
-    filterDropDownData(copyOfVisibleRates);
-    setVisibleRates([...copyOfVisibleRates]);
+    let copyOfListData = listData;
+    copyOfListData.splice(index, 1);
+    filterDropDownData(copyOfListData);
+    setListData([...copyOfListData]);
     setNewRate(null);
   };
 
   return {
     loading,
     baseValue,
-    visibleRates,
+    listData,
     dropDownData,
     fetchData,
     onChangeValue,
