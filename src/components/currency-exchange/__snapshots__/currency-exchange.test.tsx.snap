@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="ui centered middle aligned three column grid"
+>
+  <div
+    className="six wide computer sixteen wide mobile eight wide tablet column"
+  >
+    <div
+      className="ui fluid card"
+      onClick={[Function]}
+    >
+      <div
+        className="content"
+      >
+        <div
+          className="meta"
+        >
+          <div
+            className="black bold"
+          >
+            USD - United States Dollar
+          </div>
+        </div>
+        <div
+          className="header"
+        >
+          <div
+            className="row-between"
+          >
+            <div>
+              <div
+                className="ui header"
+              >
+                USD
+              </div>
+            </div>
+            <div>
+              <div
+                className="ui mini input"
+              >
+                <input
+                  defaultValue="10.00"
+                  onChange={[Function]}
+                  placeholder="Value..."
+                  type="number"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="content"
+      >
+        Loading...
+      </div>
+    </div>
+  </div>
+</div>
+`;

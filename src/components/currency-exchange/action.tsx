@@ -15,7 +15,7 @@ const Action = () => {
       {options.length !== 0 && (
         <Card.Content extra>
           {selectedOption === null ? (
-            <Button onClick={onAddMoreCurrency} size="large" centered>
+            <Button onClick={onAddMoreCurrency} size="large">
               <Icon name="plus square" />
               Add More Currency
             </Button>

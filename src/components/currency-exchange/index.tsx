@@ -4,6 +4,7 @@ import Base from "./base";
 import List from "./list";
 import Action from "./action";
 import { CurrencyContainer } from "../../stores/index";
+import { useContainer } from "unstated-next";
 
 interface ICurrencyExchange {}
 
@@ -20,20 +21,21 @@ const Loading = () => {
 };
 
 const CurrencyExchange: FunctionComponent<ICurrencyExchange> = () => {
+  // console.log({ useContainer: useContainer(CurrencyContainer) });
   const {
     baseValue,
     fetchData,
     onChangeBaseValue,
     baseCurrency,
     loading
-  } = CurrencyContainer.useContainer();
+  } = useContainer(CurrencyContainer);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
-    <Grid centered verticalAlign="middle" columns={3}>
+    <Grid verticalAlign="middle" columns={3}>
       <Grid.Column mobile={16} tablet={8} computer={6}>
         <Card fluid>
           <Base
